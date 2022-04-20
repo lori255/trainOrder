@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-toast": "@vant/weapp/toast/index"
+  }
+}

@@ -1,0 +1,144 @@
+/* pages/shopList/index.wxss */
+page,
+.container {
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.body-box {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  height: 1rpx;
+  padding-bottom: 40rpx;
+}
+
+.menu-wrapper {
+  touch-action: none;
+  position: relative;
+  width: 22%;
+  background: #f2fafd;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.menu-wrapper .li {
+  list-style: none;
+  color: gray;
+  font-size: 28rpx;
+  position: relative;
+  height: 85rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-wrapper .li.active {
+  background: #fff;
+  font-weight: bold;
+  color: #333;
+}
+
+.menu-wrapper li.active:before {
+  content: ' ';
+  position: absolute;
+  width: 2rpx;
+  height: 30%;
+  top: 35%;
+  float: left;
+  left: 5rpx;
+  background: #fad464;
+}
+
+.shop-list-box {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+}
+
+.shop-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  padding: 20rpx 40rpx;
+  border-bottom: 1rpx solid #eee;
+  cursor: pointer;
+}
+
+.item:after {
+  flex: auto;
+}
+
+.item .poster {
+  width: 150rpx;
+  height: 150rpx;
+  min-width: 150rpx;
+  min-height: 150rpx;
+  margin-right: 15rpx;
+}
+
+.item .meta {
+  width: 90%;
+  height: 100%;
+}
+
+.item .meta .title,
+.item .meta .sub-box,
+.item .meta .post-box {
+  display: block;
+  margin-bottom: 5rpx;
+}
+
+.item .meta .title {
+  font-size: 30rpx;
+  text-overflow: ellipsis;
+  line-clamp: 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.item .meta .sub-title {
+  line-height: 25rpx;
+}
+
+.item .meta .activities {
+  display: inline-block;
+  font-size: 15rpx;
+  color: #f74c31;
+  border: #f74c31 0.05rpx solid;
+  padding: 5rpx;
+  border-radius: 10%;
+  margin-right: 5rpx;
+}
+
+.item .month-sale {
+  font-size: 22rpx;
+  font-weight: bold;
+  color: #666666;
+  margin-right: 20rpx;
+}
+
+.item .sale-count,
+.item .meta .post-box {
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.item .meta .post-box .begin-price,
+.item .meta .post-box .post-price {
+  margin-right: 15rpx;
+}
+.item .meta .post-box {
+  margin-top: auto;
+}

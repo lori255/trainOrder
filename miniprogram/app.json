@@ -1,0 +1,41 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/orderList/index",
+		"pages/shopList/index",
+		"pages/item/index",
+		"pages/shop/index",
+		"pages/orderInfo/index"
+	],
+	"window": {
+		"backgroundColor": "#F6F6F6",
+		"navigationStyle": "custom",
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#F6F6F6",
+		"navigationBarTitleText": "云开发 QuickStart",
+		"navigationBarTextStyle": "black"
+	},
+	"sitemapLocation": "sitemap.json",
+	"usingComponents": {},
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#f9dd89",
+		"borderStyle": "black",
+		"backgroundColor": "#FAFAFA",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "./images/tab-diancan.png",
+				"selectedIconPath": "./images/tab-diancan-select.png",
+				"text": "订餐"
+			},
+			{
+				"pagePath": "pages/orderList/index",
+				"iconPath": "./images/tab-dingdan.png",
+				"selectedIconPath": "./images/tab-dingdan-select.png",
+				"text": "我的订单"
+			}
+		]
+	},
+	"debug": true
+}

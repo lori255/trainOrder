@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="banner-warp">
+    <swiper class="banner" autoplay="true" circular="true" indicator-dots="true" indicator-color="#a39f99" indicator-active-color="#f49641">
+      <block wx:for="{{bannerImg}}" wx:for-item="item" wx:key="_id">
+        <swiper-item>
+          <view class="li ">
+            <image src="{{item.img[0].url}}" mode="aspectFill"></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="body-warp">
+    <form catchsubmit="formSubmit" class="train-info-form">
+      <view class="train-num-box">
+        <view class="input-tip">车次号</view>
+        <view class="input-box train-num-input-box"><input class="train-num-input" name="train_num" placeholder="输入车次" value="{{train_num}}"/></view>
+      </view>
+      <view class="carriage-num-box">
+        <view class="input-tip">车厢号</view>
+        <view class="input-box carriage-num-input-box"><input class="carriage-num-input" type="digit" name="carriage_num" placeholder="输入车厢号" value="{{carriage_num}}" /></view>
+      </view>
+      <view class="seat-num-box">
+        <view class="input-tip">座位号</view>
+        <view class="input-box seat_num--input-box"><input class="seat-num-input" name="seat_num" placeholder="输入座位号" value="{{seat_num}}" /></view>
+      </view>
+      <view class="start-time-box">
+        <view class="input-tip">出发时间</view>
+        <view class="input-box tart-time-input-box">
+          <view class="picker" bindtap="onDisplay">{{ date }}</view>
+          <van-calendar show="{{ show }}" show-confirm="{{ false }}" bind:close="onClose" bind:confirm="onConfirm" color="#f8d771" />
+        </view>
+      </view>
+      <view class="submit-box"><button type="primary" formType="submit">查询</button></view>
+    </form>
+    <view class="wx-code-box" bindtap="saoma">
+      <image src="../../images/wx-saoma.png"></image>
+      <text>扫小程序码</text>
+    </view>
+  </view>
+  <!-- Toas提示 -->
+  <van-toast id="van-toast" />
+</view>

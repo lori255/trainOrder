@@ -1,0 +1,24 @@
+<!--components/detail/index.wxml-->
+<view class="container">
+	<view class="dish-img-box">
+		<image src="{{dish.img[0].url}}"></image>
+	</view>
+	<view class="detail-box">
+		<view class="content">
+			<view class="title">{{dish.name}}</view>
+			<view class="tags">
+				<van-tag plain color="#fd4c4cea" wx:for="{{dish.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</van-tag>
+			</view>
+			<view class="desc">{{dish.desc}}</view>
+			<view class="desc sale-count">月售{{dish.monthSale}}<text>总售{{dish.saleCount}}</text></view>
+			<view class="price">
+				<view class="food-price">¥{{dish.price}}<text class="food-unit">{{dish.unit}}</text></view>
+				<view class="food-select-count">
+					<view class="price_dec" wx:if="{{dish.select_count>0}}" data-type_name="{{dish.type}}" data-good_id="{{dish._id}}" data-func="dec" bindtap="change"></view>
+					<view wx:if="{{dish.select_count>0}}"><text class="select-count">{{dish.select_count}}</text></view>
+					<view class="price_add" data-good_id="{{dish._id}}" data-func="add" data-type_name="{{dish.type}}" bindtap="change"></view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

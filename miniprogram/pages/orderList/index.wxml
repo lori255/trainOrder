@@ -1,0 +1,67 @@
+<!--pages/orderList/index.wxml-->
+<view class="container">
+	<van-nav-bar title="我的订单">
+		<button class="kefu-btn" plain='true' open-type="contact" slot="left">
+			<image mode='widthFix' src="../../images/kefu.png"></image>
+		</button>
+	</van-nav-bar>
+	<view class="body-box">
+		<van-tabs active="{{ active }}" bind:change="onChange">
+			<van-tab wx:for="{{tabList.length}}" wx:for-index="index" title="{{tabList[index].name}}">
+				<scroll-view class="info-box" scroll-y>
+					<view class="info-one-box" wx:for="{{tabList[index].orderList}}" wx:for-item="item" wx:key="_id" data-order="{{item}}" bindtap="jump">
+						<view class="shop-box">
+							<image mode="heightFix" class="shop-img" src="{{item.shop_info.logo.url}}"></image>
+							<view class="shop-name">{{item.shop_info.name}}</view>
+							<view class="order-status">{{statusStr[item.status]}}</view>
+						</view>
+						<view class="goods-info">
+							<scroll-view scroll-x>
+								<view class="good-info" wx:for="{{item.goods}}" wx:for-item="good" wx:key="cid">
+									<image class="dish-img" src="{{good.img[0].url}}" />
+									<view class="dish-name">{{good.name}}</view>
+								</view>
+							</scroll-view>
+							<view class="price-info" >
+								<view class="price">￥{{item.total_amount}}</view>
+								<view class="dish-count">共 {{item.total_count}} 件</view>
+							</view>
+						</view>
+						<viwe class="btn-box">
+							<button wx:if="{{item.status===0}}" class="cancel-btn" plain="true" data-_id="{{item._id}}" data-func="cancel" catchtap="onBtnTap">取消订单</button>
+							<button wx:if="{{item.status===1}}" class="confirm-btn" plain="true" data-_id="{{item._id}}" data-func="confirm" catchtap="onBtnTap">确认收货</button>
+							<button wx:if="{{item.status===2}}" class="confirm-btn" plain="true" data-_id="{{item._id}}" data-func="remark" catchtap="onBtnTap">添加评论</button>
+						</viwe>
+					</view>
+				</scroll-view>
+			</van-tab>
+		</van-tabs>
+	</view>
+
+	<block wx:if="{{dialogShow}}">
+      <view class='toast-box'>
+        <view class='toastbg'></view>
+        <view class='showToast'>
+            <view class='toast-title'>
+                <text>输入评论</text>
+            </view>
+            <view class='toast-main'>
+                <view class='toast-input'>
+                    <textarea placeholder='' bindinput='bindComment' value="{{comment}}" maxlength="{{150}}"></textarea>
+                </view>
+            </view>
+            <view class='toast-button'>
+                <view class='button1'>
+                    <button catchtap='onClose'>取消</button>
+                </view>
+                <view class='button2'>
+                    <button catchtap='remark'>确定</button>
+                </view>
+            </view>
+        </view>
+    </view>
+  </block>
+
+	<!-- Toas提示 -->
+	<van-toast id="van-toast" />
+</view>

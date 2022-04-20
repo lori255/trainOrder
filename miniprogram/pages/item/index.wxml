@@ -1,0 +1,24 @@
+<!--pages/item/item.wxml-->
+<!--详情页-->
+<!--等待框-->
+<loading hidden="{{!loading}}">加载中...</loading>
+<!--滚动列表-->
+<scroll-view scroll-y="true">
+<view class="page-body" wx:for="{{goods}}" wx:key="id">
+<view class="item">
+  <image class='poster' src='{{item.good_img[0]}}' background-size="cover"></image>
+  <view class='meta'>
+    <text class='title'>{{item.good_name}}</text>
+    <text class="rating">{{item.good_rating}}</text>
+    <text class='good-feature'><block wx:for="{{item.good_feature}}" wx:for-item="feature" wx:key="id">{{feature}}</block></text>
+    <view class="sale-box">
+      <text class='good-sale-num'>月售{{item.good_sale_num}}</text>
+    </view>
+    <text class='good-price'>¥{{item.good_price}}</text>
+    <view class='add'>
+      <image src=""> </image>
+    </view>
+  </view>
+</view>
+</view>
+</scroll-view>

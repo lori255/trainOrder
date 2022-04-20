@@ -1,0 +1,78 @@
+<!--pages/shop/index.wxml-->
+<view class="container">
+
+        <van-nav-bar title="{{shop_info.name}}" left-text="返回" left-arrow bind:click-left="onClickLeft" />
+
+        <view class="head"></view>
+
+        <view class="body-box" style="height: {{scrollHeight}}px;">
+                <view class="goods">
+                        <view class="menu-wrapper">
+                                <scroll-view style="height: 100vh;" scroll-y scroll-into-view="{{toView}}" scroll-with-animation="true" show-scrollbar="false">
+                                        <view wx:for="{{goods}}" wx:key="id" wx:for-item="item" wx:for-index="idx" bindtap="scrollToMenu" data-current="{{idx}}" id="menu-{{idx}}" class="li {{currentIndex==idx?'active':''}}">
+                                                {{item.name}}
+                                                <view wx:if="{{item.select_count>0}}" class="type_count">{{item.select_count}}</view>
+                                        </view>
+                                </scroll-view>
+                        </view>
+                        <view class="foods-wrapper">
+                                <scroll-view style="height:100vh" scroll-y bindscroll="scrollFoods" scroll-top="{{scrollTop}}" scroll-with-animation="true" show-scrollbar="false">
+                                        <view wx:for="{{goods}}" wx:for-item="item" class="food-list-hook" wx:key="id" wx:for-index="type_index">
+                                                <text class="cate">{{item.name}}</text>
+                                                <view class="food-item" wx:for="{{item.dishes}}" wx:for-item="dish" wx:key="id" wx:for-index="index" data-type_index="{{type_index}}" data-index="{{index}}" data-value="{{true}}" bindtap="showDetail">
+                                                        <view class="icon" style="background-image:url({{dish.img[0].url}})"></view>
+                                                        <view class="content">
+                                                                <view class="title">{{dish.name}}</view>
+                                                                <view class="tags">
+                                                                        <van-tag plain color="#fd4c4cea" wx:for="{{dish.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</van-tag>
+                                                                </view>
+                                                                <view class="desc sale-count">月售{{dish.monthSale}}<text> 总售{{dish.saleCount}}</text></view>
+                                                                <view class="price">
+                                                                        <view class="food-price">¥{{dish.price}}<text class="food-unit">{{dish.unit}}</text></view>
+                                                                        <view class="food-select-count" wx:if="{{dish.isOnSale}}">
+                                                                                <view class="price_dec" wx:if="{{dish.select_count>0}}" data-type_index="{{type_index}}" data-index="{{index}}" data-func="dec" catchtap="change"></view>
+                                                                                <view wx:if="{{dish.select_count>0}}"><text class="select-count">{{dish.select_count}}</text></view>
+                                                                                <view class="price_add" data-index="{{index}}" data-func="add" data-type_index="{{type_index}}" catchtap="change"></view>
+                                                                        </view>
+                                                                </view>
+                                                        </view>
+                                                </view>
+                                        </view>
+                                </scroll-view>
+                                <view class="foods-wrapper-title">
+                                        {{goods[currentIndex].name}}
+                                </view>
+                        </view>
+                </view>
+        </view>
+
+        <!-- 底部 -->
+        <view class="order-bottom" data-value="{{true}}" bindtap="showCart">
+                <view class="Shopping" style="width: 115rpx;">
+                        <view class="Shopping-left">
+                                <image src="../../images/gouwuche.png" mode="widthFix"></image>
+                                <view class="Shopping-number" wx:if="{{total_quantity > 0}}">{{total_quantity}}</view>
+                        </view>
+                </view>
+                <view class="post-box">
+                        <view class="Shopping-title" wx:if="{{total_quantity > 0}}">¥{{total_price}}</view>
+                        <text class="post-price" wx:if="{{shop_info.shop_post_price == 0}}">免配送费</text>
+                        <text class="post-price" wx:else>配送 ¥{{shop_info.shop_post_price}}</text>
+                </view>
+                <view class="place-order" catchtap="placean_order">
+                        <button class="hide-button" disabled="{{total_price<shop_info.shop_begin_price}}" wx:if="{{total_price<shop_info.shop_begin_price}}">{{shop_info.shop_begin_price+'元起送'}}</button>
+                        <button class="show-button" plain="true" wx:if="{{total_price>=shop_info.shop_begin_price}}" open-type="getUserInfo">选好了</button>
+                </view>
+        </view>
+
+        <!-- 购物车 -->
+        <van-popup lock-scroll="{{false}}" show="{{ cart }}" duration="{{100}}" closeable round position="bottom" data-value="{{false}}" bind:close="showCart">
+                <cart shopping_cart="{{shopping_cart}}" bind:cleanCart="cleanCart" bind:change="changeCart"></cart>
+        </van-popup>
+        <!-- 商品详细页 -->
+        <van-popup show="{{ detail }}" duration="{{100}}" closeable round position="bottom" data-value="{{false}}" bind:close="showDetail">
+                <detail dish="{{goods[type_index].dishes[index]}}" bind:change="changeCart"></detail>
+        </van-popup>
+        <!-- Toas提示 -->
+        <van-toast id="van-toast" />
+</view>

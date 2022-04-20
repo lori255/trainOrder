@@ -1,0 +1,98 @@
+/* pages/orderInfo/index.wxss */
+.container {
+	background-color: #f6f6f6;
+	background-image: linear-gradient(0deg, #f6f6f6 12%, #ffe000 100%);
+	width: 100%;
+	height: 100%;
+}
+
+.train-info-box {
+	width: 100%;
+	height: 200rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.train-info-box>view {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.train-info-box .train-startstation,
+.train-endstation {
+	font-size: 40rpx;
+}
+
+.train-info-box .date {
+	border: #aaaaaa 1rpx solid;
+	padding: 5rpx 15rpx;
+	border-radius: 50rpx;
+	display: block;
+	position: relative;
+}
+
+.date:before,
+.date:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	background-color: #aaaaaa;
+	width: 20%;
+	height: 1px;
+}
+
+.date:before {
+	left: -20%;
+}
+
+.date:after {
+	right: -20%;
+}
+
+.body-box {
+	/* height: 40%; */
+	width: 95%;
+	margin: 0 auto;
+}
+
+.dishes-info-box {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.dishes-info-box image {
+	width: 100rpx;
+	height: 100rpx;
+}
+
+.dishes-info-box .dish-mate {
+	display: flex;
+	flex-direction: column;
+	margin-left: 20rpx;
+}
+
+.dishes-info-box .dish-mate .name {
+	color: #0f0f0f;
+	font-size: 25rpx;
+	font-weight: bold;
+}
+
+.dishes-info-box .dish-mate .unit,
+.dishes-info-box .dish-mate .count {
+	font-size: 20rpx;
+	line-height: 30rpx;
+	text-align: left;
+}
+
+.dishes-info-box .pirce {
+	margin-top: auto;
+	margin-left: auto;
+	color: #ff0000;
+	font-size: 35rpx;
+	font-weight: bold;
+}

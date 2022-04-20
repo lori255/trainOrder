@@ -1,0 +1,44 @@
+<!--pages/shopList/index.wxml-->
+<view class="container">
+    <van-nav-bar title="{{title}}" left-text="返回" left-arrow bind:click-left="onClickLeft" />
+    <view class="tips">
+        <van-notice-bar left-icon="logistics" text="途经配送站" color="#ffffff" background="#F2BD47" />
+    </view>
+    <view class="body-box">
+        <scroll-view class="menu-wrapper" scroll-y>
+            <view wx:for="{{menuList}}" wx:for-item="item" wx:for-index="idx" bindtap="clickMenu" data-current="{{idx}}" class="li {{currentIndex==idx?'active':''}}" wx:key="id">
+                {{item}}
+            </view>
+        </scroll-view>
+        <view class="shop-list-box">
+            <scroll-view style="height:100%;width:100%;" scroll-y bindscroll="scrollShops">
+                <view class='shop-list' wx:for="{{shopList[currentIndex]}}" wx:for-item="item" wx:key="id">
+                    <!--类型判断,显示不同的数据-->
+                    <navigator url='../shop/index?_id={{item._id}}&name={{item.name}}&shop_begin_price={{item.shop_begin_price}}&shop_post_price={{item.shop_post_price}}&uid={{item.uid}}'>
+                        <view class='item'>
+                            <image class='poster' src='{{item.logo.url}}'></image>
+                            <view class='meta'>
+                                <text class='title'>{{item.name}}</text>
+                                <view class='sub-box'>
+                                    <text class="month-sale">月售{{item.monthSale}}</text>
+                                    <text class='sale-count'>总售{{item.saleCount}}</text>
+                                </view>
+                                <view class="post-box">
+                                    <text class="begin-price">起送 ¥{{item.shop_begin_price}}</text>
+                                    <text class="post-price" wx:if="{{item.shop_post_price == 0}}">免配送费</text>
+                                    <text class="post-price" wx:else>配送 ¥{{item.shop_post_price}}</text>
+                                </view>
+                                <view class='activities-box'>
+                                    <text wx:for="{{item.shop_activity}}" wx:key="id" class="activities">{{item}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </scroll-view>
+        </view>
+
+    </view>
+    <!-- Toas提示 -->
+    <van-toast id="van-toast" />
+</view>

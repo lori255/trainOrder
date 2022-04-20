@@ -1,0 +1,158 @@
+/* components/detail/index.wxss */
+.container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 30px;
+}
+
+.dish-img-box {
+	width: 100%;
+}
+
+.dish-img-box image {
+	width: 100%;
+	max-height: 200px;
+}
+
+.detail-box {
+	width: 100%;
+}
+
+.detail-box .content {
+	overflow: hidden;
+	padding-left: 10px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.detail-box .content .tags{
+	width: auto;
+	margin-top: 10px;
+}
+
+.detail-box .content .tags van-tag{
+	margin-right: 10px;
+}
+
+.detail-box .content .desc {
+	width: 100%;
+	color: gray;
+	font-size: 15px;
+	margin-top: 10px;
+}
+
+.detail-box .content .sale-count {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.detail-box .content .desc text {
+	margin-left: 7px;
+}
+
+.detail-box .content .desc:last-child {
+	padding-top: 0px;
+	padding-bottom: 5px;
+}
+
+.detail-box .content .title {
+	font-weight: 700;
+	font-size: 20px;
+}
+
+.detail-box .content .price {
+	font-weight: 700;
+	font-size: 17px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 25px;
+}
+
+.detail-box .content .price .price_add {
+	float: right;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: #fed360;
+	right: 0px;
+	position: relative;
+	top: 2px;
+}
+
+.detail-box .content .price .price_add:before,
+.detail-box .content .price .price_add:after {
+	position: absolute;
+	content: ' ';
+	background: #000;
+	float: left;
+	border-radius: 1px;
+}
+
+.detail-box .content .price .price_add:before {
+	width: 12px;
+	height: 2px;
+	left: 5px;
+	top: 10px;
+}
+
+.detail-box .content .price .price_add:after {
+	width: 2px;
+	height: 12px;
+	left: 10px;
+	top: 5px;
+}
+
+.detail-box .content .price .price_dec {
+	box-sizing: border-box;
+	float: right;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: #f0f0f0;
+	border: #fed360 0.5px solid;
+	border-radius: 5px;
+	right: 0px;
+	position: relative;
+	top: 2px;
+}
+
+.detail-box .content .price .price_dec:before {
+	position: absolute;
+	content: ' ';
+	background: #000;
+	float: left;
+	border-radius: 1px;
+}
+
+.detail-box .content .price .price_dec:before {
+	width: 12px;
+	height: 2px;
+	left: 5px;
+	top: 10px;
+}
+
+
+
+.detail-box .content .food-select-count {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.detail-box .content .food-select-count>view {
+	margin-right: 10px;
+}
+
+.detail-box .content .price .food-unit {
+	color: #999999;
+	font-size: 10px;
+	align-self: flex-end;
+	margin-left: 5px;
+}
+
+.detail-box .content .price .food-price {
+	color: #d85455;
+}

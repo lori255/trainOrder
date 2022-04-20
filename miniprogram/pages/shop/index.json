@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-toast": "@vant/weapp/toast/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "cart": "../../components/cart/index",
+    "detail": "../../components/detail"
+  }
+}

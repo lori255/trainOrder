@@ -1,0 +1,69 @@
+/**index.wxss**/
+page,
+.container {
+  background-color: #f6f6f6;
+	height: 100%;
+	width: 100%;
+	align-items: center;
+}
+.banner-warp,
+.banner-warp .banner,
+.banner-warp image {
+	width: 100%;
+	height: 500rpx;
+}
+.banner-warp .banner-warp .li {
+	width: 100%;
+	overflow: hidden;
+}
+.banner-warp .wx-swiper-dot {
+	margin-bottom: 20rpx;
+}
+.body-warp {
+	margin-top: 20rpx;
+	display: flex;
+	width: 90%;
+}
+.train-info-form {
+	width: 100%;
+}
+.wx-code-box {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 200rpx;
+	height: 200rpx;
+  border-radius: 50% 50%;
+	right: 0rpx;
+	background-color: rgba(248, 218, 129, 0.2);
+}
+.wx-code-box image {
+	max-width: 60%;
+	max-height: 60%;
+}
+.wx-code-box text {
+	font-size: 20rpx;
+	color: #dab442;
+}
+.submit-box button {
+	background: linear-gradient(to right, #f8da81, #f8d771, #f7d362, #f6cb4a) !important;
+}
+.train-info-form .input-tip {
+	font-size: 25rpx;
+	color: #999999;
+}
+.train-info-form view {
+	margin: 30rpx 0;
+}
+.train-info-form input {
+	margin-bottom: 15rpx;
+}
+.train-info-form view:not(:first-child) .input-box {
+	border-bottom: #cccccc solid 1rpx;
+}
+.train-num-input-box {
+	border-bottom: #cccccc solid 1rpx;
+	width: 60%;
+}

@@ -1,0 +1,54 @@
+<!--pages/orderInfo/index.wxml-->
+<view class="container">
+	<van-nav-bar title="订单确认" custom-style="background-color:#ffe000" left-text="返回" left-arrow bind:click-left="onClickLeft" />
+	<view wx:if="{{!isFromOrder}}" class="train-info-box">
+		<view>
+			<view class="train-startstation">{{train_startstation}}</view>
+			<view class="date">{{date}}</view>
+			<view class="train-endstation">{{train_endstation}}</view>
+		</view>
+		<view>{{train_num}} 列车运行期间均可点餐</view>
+	</view>
+
+	<view class="body-box" style="height: {{height}}px;">
+		<van-cell-group title=" " inset="{{true}}">
+			<van-cell title="姓名">
+				<input disabled="{{isFromOrder}}" placeholder="填写收餐人姓名" value="{{name}}" data-name="name" bindinput="bindinput" />
+			</van-cell>
+
+			<van-cell title="车厢号">
+				<input disabled="{{isFromOrder}}" placeholder="输入车厢号" type="number" value="{{carriage_num}}" data-name="carriage_num" bindinput="bindinput" />
+			</van-cell>
+
+			<van-cell title="座位号">
+				<input disabled="{{isFromOrder}}" placeholder="输入座位号" value="{{seat_num}}" data-name="seat_num" bindinput="bindinput" />
+			</van-cell>
+
+			<van-cell title="手机号">
+				<input disabled="{{isFromOrder}}" placeholder="输入手机号" type="number" value="{{phone}}" data-name="phone" bindinput="bindinput" />
+			</van-cell>
+			<van-cell title="备注">
+				<input disabled="{{isFromOrder}}" placeholder="备注" value="{{note}}" data-name="note" bindinput="bindinput" />
+			</van-cell>
+		</van-cell-group>
+
+		<scroll-view style="width: 100%; height: {{height - 244 - 40}}px;" scroll-y scroll-with-animation="true" show-scrollbar="false">
+			<van-cell-group title="{{shop_info.name}}" inset="{{true}}">
+				<van-cell wx:for="{{goods_info}}" wx:for-item="item">
+					<view class="dishes-info-box">
+						<image src="{{item.img[0].url}}"></image>
+						<view class="dish-mate">
+							<view class="name">{{item.name}}</view>
+							<view class="unit">{{item.unit}}</view>
+							<view class="count">X{{item.select_count}}</view>
+						</view>
+						<view class="pirce">{{item.price * item.select_count}}</view>
+					</view>
+				</van-cell>
+			</van-cell-group>
+		</scroll-view>
+	</view>
+	<van-submit-bar buttonDisplay="{{isFromOrder?'none':''}}" price="{{ total_price*100 }}" button-text="立即支付" bind:submit="onSubmit" />
+	<!-- Toas提示 -->
+	<van-toast id="van-toast" />
+</view>

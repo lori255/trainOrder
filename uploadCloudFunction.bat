@@ -1,0 +1,1 @@
+"F:\Program Files (x86)\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-0gw9mr5ea3be030b --n quickstartFunctions --r --project "D:\wechat projects\train-order-wx" --report_first --report

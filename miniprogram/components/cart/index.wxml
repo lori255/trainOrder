@@ -1,0 +1,27 @@
+<!--components/cart/index.wxml-->
+<view class="container">
+	<view class="tips"><text>请文明用餐，保护环境</text></view>
+	<view class="clean-box" bindtap="cleanCart">
+		<van-icon name="delete-o" size="18px" />
+		<text> 清空购物车</text>
+	</view>
+	<view class="cart-goods-list" style="height: {{shopping_cart.length * 80}}px; max-height: 240px;">
+		<scroll-view style="width: 100%; height: 100%;" scroll-y>
+			<view class="food-item" wx:for="{{shopping_cart}}" wx:for-item="dish" wx:key="id" wx:for-index="index">
+				<view class="icon" style="background-image:url({{dish.img[0].url}})"></view>
+				<view class="content">
+					<view class="title">{{dish.name}}</view>
+					<view class="food-unit"><text>{{dish.unit}}</text></view>
+					<view class="price">
+						<view class="food-price">¥{{dish.select_count>0?dish.price * dish.select_count:dish.price}}</view>
+						<view class="food-select-count">
+							<view class="price_dec" wx:if="{{dish.select_count>0}}" data-type_name="{{dish.type}}" data-good_id="{{dish._id}}" data-func="dec" bindtap="change"></view>
+							<view wx:if="{{dish.select_count>0}}"><text class="select-count">{{dish.select_count}}</text></view>
+							<view class="price_add" data-good_id="{{dish._id}}" data-func="add" data-type_name="{{dish.type}}" bindtap="change"></view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+</view>

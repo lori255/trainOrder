@@ -1,0 +1,34 @@
+{
+	"database": {
+		"businesses": {
+			"name": "businesses-acc"
+		},
+		"shop": {
+			"name": "shop-info"
+		},
+		"menu": {
+			"name": "menu-info"
+		},
+		"dish": {
+			"type": {
+				"name": "dish-type-info"
+			},
+			"dishes": {
+				"name": "dish-info"
+			}
+		},
+		"order": {
+			"name": "order-info"
+		},
+		"wx-code": {
+			"name": "wx-code-info"
+		}
+	},
+	"cos": {
+		"file-folder": {
+			"img": {
+				"name": "imgs"
+			}
+		}
+	}
+}
